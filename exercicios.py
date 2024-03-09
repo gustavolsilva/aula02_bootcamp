@@ -58,7 +58,7 @@ print("A potencia dos números escolhidos é:", pot)
 # %%
 # 9) Faça um programa que converta a temperatura de Celsius para Fahrenheit.
 # (temp * 9/5) + 32
-tempC = float(input("Digite a temperatura em Celcius: "))
+tempC = float(input("Digite a temperatura em Celsius: "))
 tempF = (tempC * 9/5) + 32
 
 print("A temperatura em Fahrenheit é: ", tempF)
@@ -143,3 +143,114 @@ valdif2 = float(input("Digite outro valor: "))
 resultado_dif = (valdif1 != valdif2)
 
 print("O resultado da comparação dos dois valores é:", resultado_dif)
+# %%
+# 21) Escreva um programa que converta a temperatura de Celsius para Fahrenheit. O programa deve solicitar ao usuário a temperatura em Celsius e, 
+# utilizando try-except, garantir que a entrada seja numérica, tratando qualquer ValueError. 
+# Imprima o resultado em Fahrenheit ou uma mensagem de erro se a entrada não for válida.
+
+try:
+    tempC = float(input("Digite a temperatura em Celsius: "))
+    tempF = (tempC * 9/5) + 32
+    print(f"{tempC:.1f}ºC é equivalente à {tempF:.1f}ºF")
+except ValueError:
+    print("Digite um valor valido para temperatura")
+
+# %%
+# 22) Crie um programa que verifica se uma palavra ou frase é um palíndromo (lê-se igualmente de trás para frente, desconsiderando espaços e pontuações). 
+# Utilize try-except para garantir que a entrada seja uma string. Dica: Utilize a função isinstance() para verificar o tipo da entrada.
+
+while True:    
+    try:
+        palavra = input("Digite uma palavra: ")
+        if palavra.isalpha():
+            palavraformat = palavra.replace(" ","").lower()
+            if palavraformat == palavraformat[::-1]:
+                print(f"A {palavraformat} é um palindromo!")
+                break
+            else:
+                print(f"A {palavraformat} não é um palindromo!")
+            break
+        else:
+            print("Você não digitou uma palavra. Por favor, tente novamente!")
+    except:
+        print("Houve um erro no programa")
+
+
+# %%
+# 23) Desenvolva uma calculadora simples que aceite duas entradas numéricas e um operador (+, -, *, /) do usuário. 
+# Use try-except para lidar com divisões por zero e entradas não numéricas. 
+# Utilize if-elif-else para realizar a operação matemática baseada no operador fornecido. Imprima o resultado ou uma mensagem de erro apropriada.
+while True:
+    try:
+        num1 = float(input("Digite um numero: "))
+    except ValueError:
+        print("Você digitou um valor diferente de numerico, tente novamente")
+        continue
+    else:
+        break
+
+while True:
+    op = str(input("Digite um operador: '+' para soma, '-' para subtracao, '*' para multiplicacao e '/' para divisao: "))
+    if op not in('+','-','*','/'):
+        print("Você não digitou '+' para soma, '-' para subtracao, '*' para multiplicacao e '/' para divisao. Tente novemente: ")
+    else:
+        break
+
+while True:
+    try:
+        num2 = float(input("Digite outro numero: "))
+    except ValueError:
+        print("Você digitou um valor diferente de numerico, tente novamente")
+        continue
+    else:
+        break
+
+if op == '+':
+    resultado = num1 + num2
+elif op == '-':
+    resultado = num1 - num2
+elif op == '*':
+    resultado = num1 * num2
+else:
+    resultado = num1 / num2
+
+print(f"O Resultado de {num1:.2f} {op} {num2:.2f} é {resultado:.2f}")
+
+# %%
+# 24) Escreva um programa que solicite ao usuário para digitar um número. Utilize try-except para assegurar que a entrada seja numérica e utilize if-elif-else para 
+#classificar o número como "positivo", "negativo" ou "zero". Adicionalmente, identifique se o número é "par" ou "ímpar".
+while True:
+    try:
+        num = float(input("Digite outro numero: "))
+    except ValueError:
+        print("Você digitou um valor diferente de numerico, tente novamente")
+        continue
+    else:
+        break
+if num >0:
+    print(f"O Numero {num:.2f} é positivo")
+elif num < 0:
+    print(f"O Numero {num:.2f} é negativo")
+else:
+    print(f"O Numero {num:.2f} é zero")
+
+if(num % 2) == 0:
+    print(f"O Numero {num} é par!")
+else:
+    print(f"O Numero {num} é impar!")
+
+# %%
+# 25) Crie um script que solicite ao usuário uma lista de números separados por vírgula. O programa deve converter a string de entrada em uma lista de números 
+# inteiros. Utilize try-except para tratar a conversão de cada número e validar que cada elemento da lista convertida é um inteiro. 
+# Se a conversão falhar ou um elemento não for um inteiro, imprima uma mensagem de erro. 
+# Se a conversão for bem-sucedida para todos os elementos, imprima a lista de inteiros.
+    
+listnum = input("Digite uma lista de numeros separados por virgula: ")
+numeros_str = listnum.split(",")
+numeros_int = []
+try:
+    for num in numeros_str:
+        numeros_int.append(int(num.strip()))
+    print("Lista de numeros inteiros:", numeros_int)
+except ValueError:
+    print("Erro: certifique-se de que todos os elementos são números inteiros válidos.")
